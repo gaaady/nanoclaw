@@ -3,32 +3,33 @@
 You have access to `gcalcli` for reading and creating Google Calendar events.
 Your credentials are mounted at `/workspace/extra/gcal/` and scoped to a single calendar.
 
-Always pass `--configFolder /workspace/extra/gcal` to every gcalcli command.
+Always pass `--config-folder /workspace/extra/gcal` to every gcalcli command.
+The calendar for this group is scoped to `"Family"` — always pass `--calendar "Family"` as well.
 
 ## Reading Events
 
 ```bash
 # Today's agenda
-gcalcli --configFolder /workspace/extra/gcal agenda today tomorrow
+gcalcli --config-folder /workspace/extra/gcal --calendar "Family" agenda today tomorrow
 
 # This week
-gcalcli --configFolder /workspace/extra/gcal agenda
+gcalcli --config-folder /workspace/extra/gcal --calendar "Family" agenda
 
 # Specific date range
-gcalcli --configFolder /workspace/extra/gcal agenda "2026-03-01" "2026-03-07"
+gcalcli --config-folder /workspace/extra/gcal --calendar "Family" agenda "2026-03-01" "2026-03-07"
 
 # Calendar view (week)
-gcalcli --configFolder /workspace/extra/gcal calw
+gcalcli --config-folder /workspace/extra/gcal --calendar "Family" calw
 ```
 
 ## Creating Events
 
 ```bash
 # Quick add (natural language)
-gcalcli --configFolder /workspace/extra/gcal quick "Team standup tomorrow 9am"
+gcalcli --config-folder /workspace/extra/gcal --calendar "Family" quick "Team standup tomorrow 9am"
 
 # Add with full details
-gcalcli --configFolder /workspace/extra/gcal add \
+gcalcli --config-folder /workspace/extra/gcal --calendar "Family" add \
   --title "Meeting with Alice" \
   --when "2026-03-05 14:00" \
   --duration 60 \
@@ -40,10 +41,10 @@ gcalcli --configFolder /workspace/extra/gcal add \
 
 ```bash
 # Search events
-gcalcli --configFolder /workspace/extra/gcal search "standup"
+gcalcli --config-folder /workspace/extra/gcal --calendar "Family" search "standup"
 
 # Delete (interactive — avoid in automated flows)
-gcalcli --configFolder /workspace/extra/gcal delete "standup"
+gcalcli --config-folder /workspace/extra/gcal --calendar "Family" delete "standup"
 ```
 
 ## Output Formatting
